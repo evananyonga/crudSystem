@@ -1,8 +1,7 @@
 from models import Person
-import unittest
 
 
-class TestModels(unittest.TestCase):
+class TestModels:
 
     def test_can_retrieve_name(self):
-        self.assertEqual("", Person.name('some_name'))
+        assert Person.name() == ""
