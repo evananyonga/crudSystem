@@ -26,7 +26,7 @@ jobs:
       - run:
           name: deploy
           command: |
-            ssh circleci@54.175.198.73:22
+            ssh circleci@54.175.198.73
 #  deploy:
 #    machine:
 #      enabled: true
