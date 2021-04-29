@@ -23,19 +23,26 @@ jobs:
             . venv/bin/activate
             flake8 --exclude=venv* --statistics
             pytest -v --cov=simpleblog
-      before_script:
-        - echo -e 'Host $IP\n\tStrictHostKeyChecking no\n' >> ~/.ssh/config
-    deploy:
+  deploy:
+    docker:
+      - image: circleci/python:3.9.2
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - add_ssh_keys
       - run:
           name: deploy
           command: |
-            ssh circleci@54.175.198.73
-
-#  deploy:
-#    machine:
-#      enabled: true
-#    steps:
-#      - run:
-#          name: Deploy Over SSH
-#          command: |
-#            ssh circleci@54.175.198.73:22
+            echo '54.175.198.73 ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABgQDIQ82pZvR28PlyIfHC3FU+zZII3GmCLL4IhdrP9fbGYl/j3Tqbd9bVBg+NffFbY1oK4093k2ySekaSehTU9oyS+BvnH/A81VBaWgfhkFdQuDoNF9M5IX0L/4pyTxYdvPSD6CcNNcabaoOZdkonMV0mrD3eAOYpvQlUOtG5vdzf1dFxdCNMDN6U4a/qwNTXgghXeACzG/LwgmHpwBREfGu5krMn7tHTi/lPrBY11KXGYznOJvCBqlkp0cU0IxgPVUBT0kM9Dv96xo+Dsx92C9df6SOXYPduYZeC5r/Hn4L8ODBQ+7T/uOfo2Cbe7TTA2NMbNY6L2OcnSAwDMOQxCKz/cQKNoWSXHelzVwOUoIWvmq8mOBf7SY4RFSwhwmSmL8nL18GalfGKXIlG079l6JjnxeeKj6KwzqLggHgW6vLG9a5MT0/SRbzlXALhtpyyGxcO0Hzoa6FvS20VEFaDzsssu4sWshZISGmVInHyuJaGsvpagYuyPKov55YoBgHUgJU=' >> ~/.ssh/known_hosts
+            scp -r ~/repo circleci@54.175.198.73:~/circleupload
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
