@@ -33,9 +33,9 @@ jobs:
       - run:
           name: deploy
           command: |
-            echo '54.175.198.73 ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABgQDIQ82pZvR28PlyIfHC3FU+zZII3GmCLL4IhdrP9fbGYl/j3Tqbd9bVBg+NffFbY1oK4093k2ySekaSehTU9oyS+BvnH/A81VBaWgfhkFdQuDoNF9M5IX0L/4pyTxYdvPSD6CcNNcabaoOZdkonMV0mrD3eAOYpvQlUOtG5vdzf1dFxdCNMDN6U4a/qwNTXgghXeACzG/LwgmHpwBREfGu5krMn7tHTi/lPrBY11KXGYznOJvCBqlkp0cU0IxgPVUBT0kM9Dv96xo+Dsx92C9df6SOXYPduYZeC5r/Hn4L8ODBQ+7T/uOfo2Cbe7TTA2NMbNY6L2OcnSAwDMOQxCKz/cQKNoWSXHelzVwOUoIWvmq8mOBf7SY4RFSwhwmSmL8nL18GalfGKXIlG079l6JjnxeeKj6KwzqLggHgW6vLG9a5MT0/SRbzlXALhtpyyGxcO0Hzoa6FvS20VEFaDzsssu4sWshZISGmVInHyuJaGsvpagYuyPKov55YoBgHUgJU=' >> ~/.ssh/known_hosts
-            ssh -o StrictHostKeyChecking=no circleci@54.175.198.73:~/crudSystem exit
-            scp -r ~/repo circleci@54.175.198.73:~/crudSystem
+            echo '54.175.198.73 ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABgQIQ82pZvR28PlyIfHC3FU+zZII3GmCLL4IhdrP9fbGYl/j3Tqbd9bVBg+NffFbY1oK4093k2ySekaSehTU9oyS+BvnH/A81VBaWgfhkFdQuDoNF9M5IX0L/4pyTxYdvPSD6CcNNcabaoOZdkonMV0mrD3eAOYpvQlUOtG5vdzf1dFxdCNMDN6U4a/qwNTXgghXeACzG/LwgmHpwBREfGu5krMn7tHTi/lPrBY11KXGYznOJvCBqlkp0cU0IxgPVUBT0kM9Dv96xo+Dsx92C9df6SOXYPduYZeC5r/Hn4L8ODBQ+7T/uOfo2Cbe7TTA2NMbNY6L2OcnSAwDMOQxCKz/cQKNoWSXHelzVwOUoIWvmq8mOBf7SY4RFSwhwmSmL8nL18GalfGKXIlG079l6JjnxeeKj6KwzqLggHgW6vLG9a5MT0/SRbzlXALhtpyyGxcO0Hzoa6FvS20VEFaDzsssu4sWshZISGmVInHyuJaGsvpagYuyPKov55YoBgHUgJU=' >> ~/.ssh/known_hosts
+            ssh -o StrictHostKeyChecking=no circleci@54.175.198.73/home/circleci/crudSystem
+            scp -r ~/repo circleci@54.175.198.73/home/circleci/crudSystem
 workflows:
   version: 2
   build-deploy:
