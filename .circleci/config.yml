@@ -33,7 +33,8 @@ jobs:
       - run:
           name: deploy
           command: |
-            echo '54.175.198.73 ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABgQDIQ82pZvR28PlyIfHC3FU+zZII3GmCLL4IhdrP9fbGYl/j3Tqbd9bVBg+NffFbY1oK4093k2ySekaSehTU9oyS+BvnH/A81VBaWgfhkFdQuDoNF9M5IX0L/4pyTxYdvPSD6CcNNcabaoOZdkonMV0mrD3eAOYpvQlUOtG5vdzf1dFxdCNMDN6U4a/qwNTXgghXeACzG/LwgmHpwBREfGu5krMn7tHTi/lPrBY11KXGYznOJvCBqlkp0cU0IxgPVUBT0kM9Dv96xo+Dsx92C9df6SOXYPduYZeC5r/Hn4L8ODBQ+7T/uOfo2Cbe7TTA2NMbNY6L2OcnSAwDMOQxCKz/cQKNoWSXHelzVwOUoIWvmq8mOBf7SY4RFSwhwmSmL8nL18GalfGKXIlG079l6JjnxeeKj6KwzqLggHgW6vLG9a5MT0/SRbzlXALhtpyyGxcO0Hzoa6FvS20VEFaDzsssu4sWshZISGmVInHyuJaGsvpagYuyPKov55YoBgHUgJU=' >> ~/.ssh/known_hosts
+            ssh -o StrictHostKeyChecking=no circleci@54.175.198.73:~/crudSystem exit
+            echo '54.175.198.73 ecdsa-sha2-nistp256 AAAAB3NzaC1yc2EAAAADAQABAAABgQC8By7uAAcV2Pnm/WffP7OWzH16sJM+ZuKHb16XxKcK0kotPLh8OC4QbUqpyJBBvLLUYfzfVNQSuCguHjSLyIGDz8tfbZ7OP6Xbt+G74+9h6ItIcBEmg1O13dK+mnv349sKXiTOBPjka6m54Ue8rbm3omnxtzAo1E7p+WR8L2PUOCq2SaBYeLd/H1VvYjlDnqjKCvT9rop8IpJpoJ2ywU9+Ucyjf5U9F2pf9FqMRKTqpR6aHprbj/cFMNpWWh0GMMh1Y9/nv8sk+OoPUtG0p0YVA7tJ0eyxQmuSUS9WYA0rKEpHzlDyLDIDD1rss3U3sscy3MFxokko4Mi2mFWomizNxfXxMzsafQj227lgRt/Abyil0Qm1y6s+aQYLX2r72WwNT9moPUczIyt82Bwtx65GmlakI4A6VUmo8JkVElrVHAUz4qy1J64xy4VSd15+EfUBxVZ3BWtr0HCoSdb7NkrGRhUGz7UznjPpoSXmmKID7kuRdvyZz9fIv/wZnKw50nE=' >> ~/.ssh/known_hosts
             scp -r ~/repo circleci@54.175.198.73:~/crudSystem
 workflows:
   version: 2
